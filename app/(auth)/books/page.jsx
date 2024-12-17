@@ -1,20 +1,28 @@
 import React from 'react';
-import Image from 'next/image';
-import { logo } from '@Public/images';
-import { Col } from '@/components/col';
-import { Row } from '@/components/row';
+import fetchWrapperServer from '@/lib/fetchWrapperServer';
+import BookCard from '@/components/bookCard';
 
-export default function page() {
-  const handleRegister = () => {};
+const fetchBooks = async () => {
+  const response = await fetchWrapperServer({
+    url: 'books',
+    method: 'GET',
+  });
+
+  return response;
+};
+
+export default async function Page() {
+  const books = await fetchBooks();
 
   return (
-    <Row className='h-screen !gap-0'>
-      <Col xs={12} md={6} className='flex items-center justify-center '>
-        <Image src={logo} alt='Example' width={300} height={300} className='object-contain' />
-      </Col>
-      <Col xs={12} md={6} className='flex items-center justify-center md:h-screen h-52'>
-        <h1>Listado de libros</h1>
-      </Col>
-    </Row>
+    <>
+      <h2 className='h1-sm m-2'>Biblioteca</h2>
+
+      <div className='container flex flex-wrap'>
+        {books.map(({ image, title, author }, key) => (
+          <BookCard image={image} title={title} author={author} key={key} />
+        ))}
+      </div>
+    </>
   );
 }

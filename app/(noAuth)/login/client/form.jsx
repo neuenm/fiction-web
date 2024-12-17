@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { LoadingButton } from '@/components/ui/loadingButton';
 import { Form } from '@/components/ui/form';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
+import fetchWrapperServer from '@/lib/fetchWrapperServer';
 
 export default function LoginForm() {
   const [loading, setLoading] = useState(false);
@@ -30,18 +31,14 @@ export default function LoginForm() {
 
   const handleLogin = async (values) => {
     try {
-      const response = await fetch('http://localhost:8080/login', {
+      const data = await fetchWrapperServer({
+        url: 'login',
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        body: {
           email: values.email,
           password: values.password,
-        }),
+        },
       });
-
-      const data = await response.json();
 
       if (data.accessToken) {
         document.cookie = `token=${data.accessToken}; path=/; SameSite=Strict`;
@@ -62,16 +59,15 @@ export default function LoginForm() {
           <div className='flex flex-col space-y-4'>
             <Input {...register('email')} placeholder='Email' id='email' type='email' />
             <Input {...register('password')} placeholder='Password' id='password' type='password' />
-            <Button
+            <LoadingButton
               type='submit'
               variant='default'
               size='lg'
               className='w-full'
-              loading={loading}
-              disabled={loading}
+              loading={isSubmitting}
             >
               Login
-            </Button>
+            </LoadingButton>
           </div>
         </form>
       </Form>

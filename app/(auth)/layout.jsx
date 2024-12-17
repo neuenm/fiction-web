@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Header from '@/components/header';
 import { getTokenFormCookies, getUserFromCookies } from '@Utils/manageCookies';
