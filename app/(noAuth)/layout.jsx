@@ -1,11 +1,10 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { getTokenFormCookies } from '@Utils/manageCookies';
 
 export default async function AuthLayout({ children }) {
-  const cookieStore = cookies();
-  const cookieStoreResult = await cookieStore;
+  const token = await getTokenFormCookies();
 
-  const token = cookieStoreResult.get('token');
   //if the user is loged in, redirect to the books page
   if (token) {
     redirect('/books');

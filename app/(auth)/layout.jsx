@@ -1,13 +1,11 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Header from '@/components/header';
+import { getTokenFormCookies, getUserFromCookies } from '@Utils/manageCookies';
 
 export default async function AuthLayout({ children }) {
-  const cookieStore = cookies();
-  const cookieStoreResult = await cookieStore;
-
-  const token = cookieStoreResult.get('token');
-  const user = cookieStoreResult.get('user');
+  const token = await getTokenFormCookies();
+  const user = await getUserFromCookies();
 
   let userObject;
   if (user) {
@@ -22,7 +20,7 @@ export default async function AuthLayout({ children }) {
   return (
     <>
       <Header user={userObject} />
-      {children}
+      <div className='container p-10'>{children}</div>
     </>
   );
 }
