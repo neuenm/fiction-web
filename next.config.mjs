@@ -2,8 +2,13 @@
 import path from 'path';
 
 const nextConfig = {
+  images: {
+    domains: ['tienda.planetadelibros.com.ar', 'www.tematika.com'],
+  },
   webpack: (config) => {
     config.resolve.alias['@Public'] = path.resolve(__dirname, 'public');
+    config.resolve.alias['@Utils'] = path.resolve(__dirname, 'utils');
+
     return config;
   },
 };
