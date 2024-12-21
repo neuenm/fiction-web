@@ -26,7 +26,7 @@ export default function LoginForm({ requestLogin }) {
   });
 
   const {
-    formState: { isSubmitting, isValid, errors },
+    formState: { isSubmitting, errors },
     register,
     handleSubmit,
   } = form;

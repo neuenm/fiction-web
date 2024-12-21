@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTokenFormCookies } from '@Utils/manageCookies';
 import { redirect } from 'next/navigation';
 
