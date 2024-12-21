@@ -1,10 +1,10 @@
 import React from 'react';
 import fetchWrapperServer from '@/lib/fetchWrapperServer';
-import BookCard from '@/components/bookCard';
+import BookCard from './components/server/bookCard';
 
 const fetchBooks = async () => {
   const response = await fetchWrapperServer({
-    url: 'books',
+    url: '660/books',
     method: 'GET',
   });
 
@@ -17,10 +17,9 @@ export default async function Page() {
   return (
     <>
       <h2 className='h1-sm m-2'>Biblioteca</h2>
-
       <div className='container flex flex-wrap'>
-        {books.map(({ image, title, author }, key) => (
-          <BookCard image={image} title={title} author={author} key={key} />
+        {books.map((book, key) => (
+          <BookCard book={book} key={key} />
         ))}
       </div>
     </>
