@@ -55,7 +55,7 @@ export default function LoginForm({ requestLogin }) {
       <Form {...form}>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className='flex flex-col space-y-4'>
-            <Input {...register('email')} placeholder='Email' id='email' type='email' />
+            <Input {...register('email')} placeholder='Email' id='email' />
             {errors.email && <FormErrorMessage error={errors.email.message} />}
 
             <Input {...register('password')} placeholder='Password' id='password' type='password' />
