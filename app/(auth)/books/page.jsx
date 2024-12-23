@@ -17,7 +17,7 @@ export default async function Page() {
   return (
     <>
       <h2 className='h1-sm m-2'>Biblioteca</h2>
-      <div className='container flex flex-wrap'>
+      <div className='container flex flex-wrap '>
         {books.map((book, key) => (
           <BookCard book={book} key={key} />
         ))}

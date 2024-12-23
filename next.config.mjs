@@ -3,7 +3,7 @@ import path from 'path';
 
 const nextConfig = {
   images: {
-    domains: ['tienda.planetadelibros.com.ar', 'www.tematika.com'],
+    domains: ['tienda.planetadelibros.com.ar', 'www.tematika.com', 'www.lapatilla.com'],
   },
   webpack: (config) => {
     config.resolve.alias['@Public'] = path.resolve(__dirname, 'public');

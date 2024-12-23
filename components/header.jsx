@@ -48,7 +48,7 @@ const Header = ({ user }) => {
           <DropdownMenuContent>
             <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>Salir</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

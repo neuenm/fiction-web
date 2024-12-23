@@ -35,9 +35,9 @@ export default function BookMetrics({ readingTimes }) {
         </div>
       </div>
 
-      <p className='text-center text-lg mt-4'>{getMotivationalMessage(averageReadingTime)}</p>
+      <p className='text-center text-lg my-4'>{getMotivationalMessage(averageReadingTime)}</p>
 
-      <LinkButton link={'/books'} text='Ir a la biblioteca' />
+      <LinkButton link={'/books'} className='mt-4' text='Volver a la biblioteca' />
     </PapperContainer>
   );
 }
