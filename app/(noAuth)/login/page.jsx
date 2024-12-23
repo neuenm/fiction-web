@@ -13,7 +13,7 @@ export default function page() {
       url: 'login',
       method: 'POST',
       body: {
-        email: values.email,
+        email: values.email?.toLowerCase(),
         password: values.password,
       },
     });
